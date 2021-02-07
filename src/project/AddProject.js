@@ -1,15 +1,48 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
-import { withAuthenticator } from 'aws-amplify-react'
-import Amplify, { Auth } from 'aws-amplify';
-import aws_exports from './aws-exports';
-Amplify.configure(aws_exports);
 
-class AddProject extends Component {
-  render() {
-    return "this is it"
-  }
+
+class AddProject extends React.Component{
+	
+	constructor(props){
+		super(props);
+		this.state = {
+			title: null,
+			description: null,
+			startDate: null,
+			endDate: null,
+			projectId: null,
+		};
+	}
+	
+	handFormChange(){
+
+	}
+	
+	render(){
+		return (
+			<div className="container">
+				<label>
+					Title : 
+					<textarea value={this.state.title} onChange={this.handleFormChange} />
+				</label><br/>
+				<label>
+					Description : 
+					<textarea value={this.state.description} onChange={this.handleFormChange} />
+				</label><br/>				
+				<label>
+					Start Date : 
+					<textarea value={this.state.startDate} onChange={this.handleFormChange} />
+				</label><br/>				
+				<label>
+					End Date : 
+					<textarea value={this.state.endDate} onChange={this.handleFormChange} />
+				</label><br/>								
+				<input type="submit" value="Submit" />
+			</div>
+		);
+	}
 }
 
-export default withAuthenticator(AddProject, true);
+export default AddProject;
